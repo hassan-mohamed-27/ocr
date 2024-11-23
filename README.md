@@ -142,26 +142,35 @@ The Invoice OCR App is a comprehensive application designed to extract essential
 The project follows this structure:
 
 ```
-app/
-├── __init__.py
-├── main.py
-├── routes/
+project/
+│
+├── app/
 │   ├── __init__.py
-│   ├── auth.py
-│   ├── monitor.py
-│   ├── ocr.py
-│   └── upload.py
-├── services/
-│   ├── __init__.py
-│   ├── google_drive_service.py
-│   └── ocr/
+│   ├── main.py
+│   ├── routes/
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── monitor.py
+│   │   ├── ocr.py
+│   │   └── upload.py
+│   ├── services/
+│   │   ├── __init__.py
+│   │   ├── google_drive_service.py
+│   │   └── ocr/
+│   │       ├── __init__.py
+│   │       ├── ocr_interface.py
+│   │       ├── pytesseract_backend.py
+│   │       ├── easyocr_backend.py
+│   │       └── genai_backend.py
+│   └── utils/
 │       ├── __init__.py
-│       ├── ocr_interface.py
-│       ├── pytesseract_backend.py
-│       ├── easyocr_backend.py
-│       └── genai_backend.py
-└── utils/
-    ├── __init__.py
-    ├── config.py
-    └── text_parser.py
+│       ├── text_parser.py
+│       └── config.py
+│
+├── downloads/
+│
+├── client_secret.json
+├── token.json
+├── requirements.txt
+└── README.md 
 ```
