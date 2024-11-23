@@ -72,21 +72,9 @@ The Invoice OCR App is a comprehensive application designed to extract essential
 
 1. **Google Drive API Credentials:** Place your `client_secret.json` file in the project's root directory.  The application will generate a `token.json` file upon first authentication.
 
-2. **GenAI API Key:** Set the environment variable:
-   ```bash
-   export GENAI_API_KEY=<your_genai_api_key>
-   ```
 
-3. **Detection Areas YAML:** Define detection areas in a YAML file (`detection_areas.yaml`) specifying regions in the invoice images for OCR.
+3. **Detection Areas YAML:** Define detection areas in a YAML file (`detection_areas.yaml`) specifying regions in the invoice images for OCR using helper script.
 
-   ```yaml
-   # Example detection_areas.yaml
-    invoice_number:
-    - x: 100  
-      y: 200   
-      width: 300 
-      height: 50
-   ```
 
 
 ## Usage
@@ -112,6 +100,7 @@ The Invoice OCR App is a comprehensive application designed to extract essential
 | POST   | `/upload_image`  | Upload an invoice image.                              |
 | POST   | `/extract_invoice`| Perform OCR on an invoice image.                     |
 | POST   | `/monitor`       | Start monitoring a Google Drive folder.                |
+detailed description  is in the postman collection 
 
 
 
@@ -133,7 +122,7 @@ The Invoice OCR App is a comprehensive application designed to extract essential
 
 ### Google Generative AI (GenAI)
 
-- Leverages Google's advanced Generative AI models for OCR. Requires a GenAI API key (set as an environment variable).
+- Leverages Google's advanced gmini models for OCR. Requires a GenAI API key (set as an environment variable).
 
 
 ## Folder Structure
