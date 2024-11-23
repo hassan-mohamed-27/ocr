@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "41014606-8f88-401f-a5d2-a0c4cd8e1831",
+		"name": "Invoice OCR App",
+		"description": "A collection of API requests for the Invoice OCR application.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39946373"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Endpoint to perform login and authentication with Google Drive API."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints related to authentication and login."
+		},
+		{
+			"name": "OCR",
+			"item": [
+				{
+					"name": "Extract Invoice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "filename",
+									"value": "invoice.jpg",
+									"description": "Name of the image file in the 'downloads' folder.",
+									"type": "text"
+								},
+								{
+									"key": "ocr_backend",
+									"value": "pytesseract",
+									"description": "OCR backend to use ('pytesseract', 'easyocr', 'genai').",
+									"type": "text"
+								},
+								{
+									"key": "genai_api_key",
+									"value": "your_api_key",
+									"description": "API key for GenAI OCR backend (required if 'ocr_backend' is 'genai').",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/extract_invoice",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"extract_invoice"
+							]
+						},
+						"description": "Endpoint to extract invoice details from an existing image in the downloads folder."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints related to OCR functionality."
+		},
+		{
+			"name": "Monitoring",
+			"item": [
+				{
+					"name": "Start Monitoring",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"folder_name\": \"Invoices\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/monitor",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"monitor"
+							]
+						},
+						"description": "Endpoint to start monitoring a Google Drive folder for new files."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints related to monitoring Google Drive folders."
+		},
+		{
+			"name": "File Upload",
+			"item": [
+				{
+					"name": "Upload YAML",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "yaml_file",
+									"type": "file",
+									"src": "/path/to/detection_areas.yaml"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/upload_yaml",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"upload_yaml"
+							]
+						},
+						"description": "Endpoint to upload a YAML file containing detection areas."
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/path/to/invoice.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/upload_image",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"upload_image"
+							]
+						},
+						"description": "Endpoint to upload an image file to the 'downloads' folder."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints related to file upload functionality."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}
